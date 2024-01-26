@@ -51,6 +51,7 @@
             this.Lbl_PlayingTrack_Timer = new System.Windows.Forms.Label();
             this.Lbl_PlaylingTrack_Duration = new System.Windows.Forms.Label();
             this.Cbx_RealShuffle = new System.Windows.Forms.CheckBox();
+            this.Tbx_RealShuffle_Amount = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Pb_PlayingTrack_Image)).BeginInit();
             this.SuspendLayout();
             // 
@@ -262,18 +263,26 @@
             // Cbx_RealShuffle
             // 
             this.Cbx_RealShuffle.AutoSize = true;
-            this.Cbx_RealShuffle.Location = new System.Drawing.Point(93, 233);
+            this.Cbx_RealShuffle.Location = new System.Drawing.Point(121, 235);
             this.Cbx_RealShuffle.Name = "Cbx_RealShuffle";
             this.Cbx_RealShuffle.Size = new System.Drawing.Size(81, 17);
             this.Cbx_RealShuffle.TabIndex = 27;
             this.Cbx_RealShuffle.Text = "RealShuffle";
             this.Cbx_RealShuffle.UseVisualStyleBackColor = true;
             // 
+            // Tbx_RealShuffle_Amount
+            // 
+            this.Tbx_RealShuffle_Amount.Location = new System.Drawing.Point(78, 233);
+            this.Tbx_RealShuffle_Amount.Name = "Tbx_RealShuffle_Amount";
+            this.Tbx_RealShuffle_Amount.Size = new System.Drawing.Size(37, 20);
+            this.Tbx_RealShuffle_Amount.TabIndex = 28;
+            // 
             // SpotifyRandomizer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(576, 424);
+            this.Controls.Add(this.Tbx_RealShuffle_Amount);
             this.Controls.Add(this.Cbx_RealShuffle);
             this.Controls.Add(this.Lbl_PlaylingTrack_Duration);
             this.Controls.Add(this.Lbl_PlayingTrack_Timer);
@@ -317,7 +326,6 @@
         private System.Windows.Forms.Button Btn_TogglePlay;
         private System.Windows.Forms.Button Btn_Forward;
         private System.Windows.Forms.Timer GetTrackProgressTimer;
-        private NAudio.Gui.VolumeSlider Volume_Slider;
         private System.Windows.Forms.ProgressBar Pb_Time;
         private System.Windows.Forms.PictureBox Pb_PlayingTrack_Image;
         private System.Windows.Forms.Label Lbl_PlayingTrack_Name;
@@ -325,6 +333,7 @@
         private System.Windows.Forms.Label Lbl_PlayingTrack_Timer;
         private System.Windows.Forms.Label Lbl_PlaylingTrack_Duration;
         private System.Windows.Forms.CheckBox Cbx_RealShuffle;
+        private System.Windows.Forms.TextBox Tbx_RealShuffle_Amount;
     }
 }
 

@@ -73,7 +73,7 @@ namespace App_Spotify
 
         private void Btn_AddToQuery_Click(object sender, EventArgs e)
         {
-            if (devices == null || devices.Count == 0) return;
+            if (devices == null || devices.Count == 0 || Lbx_Tracks.SelectedIndex < 0) return;
             var track = (FullTrack)current_playlist.Tracks.Items[Lbx_Tracks.SelectedIndex].Track;
             PlayerAddToQueueRequest request = new PlayerAddToQueueRequest(track.Uri);
             player.AddToQueue(request);
@@ -113,8 +113,8 @@ namespace App_Spotify
             PlayerResumePlaybackRequest request = new PlayerResumePlaybackRequest();
 
             int offset = rnd.Next(0, current_playlist.Tracks.Items.Count);
-            request.OffsetParam.Position = offset;
             request.OffsetParam = new PlayerResumePlaybackRequest.Offset();
+            request.OffsetParam.Position = offset;
             request.ContextUri = current_playlist.Uri;
             player.ResumePlayback(request);
 
@@ -127,14 +127,16 @@ namespace App_Spotify
         private void AddShuffleToQueue()
         {
             Random rnd = new Random();
-            for (int i = 0; i < 50; i++)
+            int amount = 20;
+            try { amount = Convert.ToInt32(Tbx_RealShuffle_Amount.Text); } catch { }
+            for (int i = 0; i < amount; i++)
             {
                 int next = rnd.Next(Lbx_Tracks.Items.Count - 1);
                 var track = (FullTrack)current_playlist.Tracks.Items[next].Track;
                 PlayerAddToQueueRequest Qrequest = new PlayerAddToQueueRequest(track.Uri);
                 player.AddToQueue(Qrequest);
             }
-        } // Add 50 random Tracks from current Playlist to queue
+        } // Add 20 (or given amount of) random Tracks from current Playlist to queue
 
         private void Pb_Time_Click(object sender, EventArgs e)
         {
@@ -233,7 +235,7 @@ namespace App_Spotify
         {
             devices = new List<Device>();
             List<string> result = new List<string>();
-            var sessions = authenticating.GetSpotifyClient.Player.GetAvailableDevices().Result;
+            var sessions = player.GetAvailableDevices().Result;
             if (devices == sessions.Devices) { return; }
 
             foreach (var device in sessions.Devices)
